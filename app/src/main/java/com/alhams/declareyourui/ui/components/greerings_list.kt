@@ -1,7 +1,8 @@
 package com.alhams.declareyourui.ui.components
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -12,8 +13,8 @@ fun GreetingsList(
     modifier: Modifier = Modifier,
     names: List<String>
 ) {
-    Column(modifier = modifier.padding(vertical = 4.dp)) {
-        for (name in names) {
+    LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
+        items(items = names) { name ->
             Greeting(name = name)
         }
     }
@@ -22,7 +23,7 @@ fun GreetingsList(
 @Preview(showBackground = true)
 @Composable
 fun GreetingsListPreview(
-    names: List<String> = listOf("World", "Compose")
+    names: List<String> = List(1000) { "$it" }
 ) {
     GreetingsList(names = names)
 }

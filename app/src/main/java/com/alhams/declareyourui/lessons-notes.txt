@@ -4,3 +4,7 @@
    it would be better to let it notify us when the user clicked on the Continue button.
    How do we pass events up? By passing callbacks down. Callbacks are functions that are
    passed as arguments to other functions and get executed when the event occurs.
+
+2- To display a scrollable column we use a LazyColumn.
+ LazyColumn renders only the visible items on screen,
+ allowing performance gains when rendering a big list.
