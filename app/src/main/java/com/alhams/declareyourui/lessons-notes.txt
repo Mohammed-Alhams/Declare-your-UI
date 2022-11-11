@@ -1,0 +1,6 @@
+1- We need to share shouldShowOnboarding with the onboarding screen,
+   but we are not going to pass it directly.
+   Instead of letting OnboardingScreen mutate our state,
+   it would be better to let it notify us when the user clicked on the Continue button.
+   How do we pass events up? By passing callbacks down. Callbacks are functions that are
+   passed as arguments to other functions and get executed when the event occurs.
