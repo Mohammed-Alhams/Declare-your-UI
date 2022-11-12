@@ -1,5 +1,6 @@
 package com.alhams.declareyourui.ui.components
 
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -13,7 +14,9 @@ fun GreetingsList(
     modifier: Modifier = Modifier,
     names: List<String>
 ) {
-    LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
+    LazyColumn(modifier = modifier
+        .padding(vertical = 4.dp)
+        .fillMaxHeight()) {
         items(items = names) { name ->
             Greeting(name = name)
         }
