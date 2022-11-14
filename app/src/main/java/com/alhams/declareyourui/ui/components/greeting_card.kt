@@ -16,6 +16,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -42,8 +43,17 @@ fun Greeting(name: String) {
                     .weight(1f)
                     .padding(bottom = extraPadding.coerceAtLeast(0.dp))
             ) {
-                Text(text = "Hello, ")
-                Text(text = name)
+                Text(text = "Hello!, ")
+                Text(
+                    text = name,
+//                    style = MaterialTheme.typography.headlineMedium,
+                    style = MaterialTheme.typography.headlineMedium.copy(
+//                        sometimes you need to deviate slightly from the selection of colors
+//                        and font styles. In those situations it's better to base your color
+//                        or style on an existing one.
+                        fontWeight = FontWeight.Bold
+                    )
+                )
             }
 
             ElevatedButton(onClick = {
