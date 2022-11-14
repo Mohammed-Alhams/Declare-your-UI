@@ -19,7 +19,7 @@ fun GreetingsList(
         .padding(vertical = 4.dp)
         .fillMaxHeight()) {
         items(items = names) { name ->
-            Greeting(name = name)
+            GreetingCard(name = name)
         }
     }
 }
