@@ -10,6 +10,7 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
@@ -37,6 +38,28 @@ private val LightColorScheme = lightColorScheme(
     */
 )
 
+private val LightColorPalette = lightColorScheme(
+    primary = gray900,
+    secondary = rust600,
+    background = taupe100,
+    surface = Color.White.copy(alpha = .85f),
+    onPrimary = Color.White,
+    onSecondary = Color.White,
+    onBackground = taupe800,
+    onSurface = gray900.copy(alpha = 0.8f)
+)
+
+private val DarkColorPalette = darkColorScheme(
+    primary = Color.White,
+    secondary = rust300,
+    background = gray900,
+    surface = Color.White.copy(alpha = 0.15f),
+    onPrimary = gray900,
+    onSecondary = gray900,
+    onBackground = taupe100,
+    onSurface = Color.White.copy(alpha = .8f)
+)
+
 @Composable
 fun DeclareYourUITheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -50,8 +73,8 @@ fun DeclareYourUITheme(
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
 
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        darkTheme -> DarkColorPalette
+        else -> LightColorPalette
     }
     val view = LocalView.current
     if (!view.isInEditMode) {
