@@ -1,6 +1,13 @@
 package com.alhams.declareyourui.domain
 
-data class WellnessTask(
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+
+class WellnessTask(
     val id: Int,
-    val label: String
-)
+    val label: String,
+    initialCheckedState: Boolean = false
+) {
+    var checked by mutableStateOf(initialCheckedState)
+}

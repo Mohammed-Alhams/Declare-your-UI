@@ -10,6 +10,7 @@ import com.alhams.declareyourui.domain.WellnessTask
 @Composable
 fun WellnessTaskList(
     tasks: List<WellnessTask>,
+    onCheckedTask: (WellnessTask, Boolean) -> Unit,
     onCloseTask: (WellnessTask) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -18,7 +19,9 @@ fun WellnessTaskList(
     ) {
         items(items = tasks, key = { task -> task.id }) { item ->
             WellnessTaskItem(
-                taskName = item.label,
+                title = item.label,
+                checked = item.checked,
+                onCheckedChange = { checked -> onCheckedTask(item, checked) },
                 onClose = { onCloseTask(item) },
             )
         }
@@ -31,6 +34,10 @@ fun WellnessTaskList(
 @Composable
 @Preview
 fun WellnessTaskListPreview() {
-    WellnessTaskList(tasks = emptyList(), {})
+    WellnessTaskList(
+        tasks = emptyList(),
+        onCloseTask = {},
+        onCheckedTask = { task, checked -> }
+    )
 }
 
