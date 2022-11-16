@@ -3,23 +3,24 @@ package com.alhams.declareyourui.ui.components
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.alhams.declareyourui.domain.WellnessTask
 
 @Composable
 fun WellnessTaskList(
+    tasks: List<WellnessTask>,
+    onCloseTask: (WellnessTask) -> Unit,
     modifier: Modifier = Modifier,
-    tasks: List<WellnessTask> = remember {
-        getWellnessTasks()
-    },
 ) {
     LazyColumn(
         modifier = modifier
     ) {
-        items(tasks) { item ->
-            WellnessTaskItem(taskName = item.label)
+        items(items = tasks, key = { task -> task.id }) { item ->
+            WellnessTaskItem(
+                taskName = item.label,
+                onClose = { onCloseTask(item) },
+            )
         }
     }
 
@@ -30,8 +31,6 @@ fun WellnessTaskList(
 @Composable
 @Preview
 fun WellnessTaskListPreview() {
-    WellnessTaskList()
+    WellnessTaskList(tasks = emptyList(), {})
 }
 
-private fun getWellnessTasks() =
-    List(30) { i -> WellnessTask(i, "Task # $i") }

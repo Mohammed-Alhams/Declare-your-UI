@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun WellnessTaskItem(
     taskName: String,
+    onClose: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var checkedState by rememberSaveable { mutableStateOf(false) }
@@ -31,7 +32,7 @@ fun WellnessTaskItem(
         title = taskName,
         checked = checkedState,
         onCheckedChange = { newValue -> checkedState = newValue },
-        onClose = {}, // we will implement this later!
+        onClose = onClose, // we will implement this later!
         modifier = modifier,
     )
 }
@@ -72,6 +73,7 @@ fun WellnessTaskItem(
 @Preview
 fun WellnessTaskItemPreview() {
     WellnessTaskItem(
-        "empty task"
+        "empty task",
+        {}
     )
 }
